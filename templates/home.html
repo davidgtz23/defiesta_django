@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+
+    <section class="home">
+        <div class="home__banner">
+            <div class="home__banner-item" style="background-image: url('./static/images/home/bg_banner.jpg');">
+
+
+                <div class="search">
+                    <h3>Todo lo que necesitas para tu evento aquí lo podrás encontrar</h3>
+                    <div class="search__form">
+                        <form action="">
+                            <div class="search__form-group">
+                                <input type="text" placeholder="¿En Dónde?">
+                                <input type="text" placeholder="¿Qué necesitas?">
+                                <button type="submit">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="home__providers">
+        <h2>Dale un vistazo a nuestros proveedores</h2>
+        <div class="container">
+            {% for category in categories %}
+                <a class="home__providers-item" href="{% url 'providers:category_detail' category.pk %}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="home__join">
+        <div class="container">
+            <div class="home__join-card">
+                <h3>¿Quieres formar parte de nuestro directorio de proveedore</h3>
+                <p>
+                    Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum
+                </p>
+                <a class="cta" href="#">
+                    Registrarme
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </a>
+            </div>
+            <img class="home__join-image" src="./static/images/providers.jpeg" alt="">
+        </div>
+    </section>
+
+    <section class="home__places">
+        <div class="container">
+            <div class="home__places-content" id="providersList">
+                {% for provider in providers %}
+                    <article class="home__places-item">
+                        <img src="{% static 'images/' %}{{ provider.imagen }}" alt="Lugar">
+                        <a href="{% url 'providers:provider_detail' provider.pk %}" class="title">
+                            {{ provider.name }}
+                        </a>
+                        <div class="location">
+                            {{ provider.category.name }}
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+{% endblock content %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<main>
+
+    <section class="provider__head">
+        <div class="container">
+            <h1 class="text-center">
+                AGREGAR NUEVO PROVEEDOR
+            </h1>
+        </div>
+    </section>
+
+    <section class="home__places">
+        <div class="container">
+            
+        <div class="login">
+            {% if form.errors %}
+                <div class="alert">
+                    Credenciales inválidas.
+                    <br>
+                    Inténtalo de nuevo
+                </div>
+            {% endif %}
+
+            <form method="post">
+              {% csrf_token %}
+              <div class="field">
+                <label class="label">Nombre:</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="" name="name" />
+                </div>
+              </div>
+  
+              <div class="field">
+                <label for="artist-id" class="label">Categoría:</label>
+                <div class="control">
+                  <div class="select">
+                    <select name="category_id" id="artist-id" class="input">
+                      <option>-----------</option>
+                      {% for category in categories %}
+                      <option value="{{ category.id }}">{{ category.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Direccion:</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="" name="direction" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Teléfono:</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="" name="telefono" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Servicios:</label>
+                <div class="control">
+                  <textarea name="servicios" class="input" cols="30" rows="10"></textarea>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Imagen:</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="" name="imagen" />
+                </div>
+              </div>
+  
+              <div class="field buttons">
+                  <button type="submit" class="button is-link">Crear</button>
+                  <button type="reset" class="button is-link is-light">Reiniciar</button>
+              </div>
+  
+            </form>      
+        </div>
+
+        </div>
+    </section>
+
+</main>
+{% endblock content %}

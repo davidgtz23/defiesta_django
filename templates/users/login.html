@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<main>
+
+    <section class="provider__head">
+        <div class="container">
+            <h1 class="text-center">
+                INICIAR SESIÓN
+            </h1>
+        </div>
+    </section>
+
+    <section class="home__places">
+        <div class="container">
+            
+        <div class="login">
+            {% if form.errors %}
+                <div class="alert">
+                    Credenciales inválidas.
+                    <br>
+                    Inténtalo de nuevo
+                </div>
+            {% endif %}
+
+            <form method="post">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label">Nombre de usuario:</label>
+                <div class="control">
+                <input class="input" type="text" name="username" />
+                </div>
+            </div>
+        
+            <div class="field">
+                <label class="label">Contraseña:</label>
+                <div class="control">
+                <input class="input" type="password" name="password" />
+                </div>
+            </div>
+        
+            <div class="field buttons">    
+                <button type="submit" class="button">Iniciar sesión</button>
+             
+                <button type="reset" class="button transparent">Reiniciar</button>
+               
+                <br>        
+                <a href="{% url 'users:signup' %}" type="reset" class="button gray">REGISTRARME</a>
+               
+            </div>
+        
+            <input type="hidden" name="next" value="{{ next }}">
+            </form>  
+        </div>
+
+        </div>
+    </section>
+
+</main>
+{% endblock content %}

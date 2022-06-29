@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    {% block title %}
+    <title>DeFiesta  - Proveedores</title>
+    {% endblock title %}
+
+    <script src="https://kit.fontawesome.com/01d7b21854.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+
+    {% include '_header.html' %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% include '_footer.html' %}
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    {% block javascript %}
+    {% endblock javascript %}
+
+</body>
+</html>

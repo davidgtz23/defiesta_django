@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+
+    <section class="provider__head">
+        <div class="container">
+            <h1 class="text-center">
+                PROVEDORES
+            </h1>
+        </div>
+    </section>
+
+    <section class="home__places">
+        <div class="container">
+            <div class="home__places-content" id="providersList">
+                {% for provider in providers %}
+                    <article class="home__places-item">
+                        <img src="{% static 'images/' %}{{ provider.imagen }}" alt="Lugar">
+                        <a href="{% url 'providers:provider_detail' provider.pk %}" class="title">
+                            {{ provider.name }}
+                        </a>
+                        <div class="location">
+                            {{ provider.category.name }}
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock content %}
+

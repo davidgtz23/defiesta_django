@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Crear usuario</title>
+{% endblock title %}
+
+
+{% block content %}
+
+  <main>
+
+    <section class="provider__head">
+        <div class="container">
+            <h1 class="text-center">
+                INICIAR SESIÓN
+            </h1>
+        </div>
+    </section>
+
+    <section class="home__places">
+        <div class="container">
+            
+        <div class="login">
+            {% if form.errors %}
+                <div class="alert">
+                    Credenciales inválidas.
+                    <br>
+                    Inténtalo de nuevo
+                </div>
+            {% endif %}
+
+            
+
+            <form method="post">
+              {% csrf_token %}
+              <div class="field">
+                <label for="username-id" class="label">Nombre de usuario:</label>
+                <div class="control">
+                  <input
+                    class="input{% if form.username.errors %} is-danger{% endif %}"
+                    type="text"
+                    name="username"
+                    id="username-id"
+                    {% if form.errors %}value="{{ form.username.value }}"{% endif %}
+                    required
+                    />
+                </div>
+                {% for error in form.username.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+
+              <div class="field">
+                <label for="first-name-id" class="label">Nombre(s):</label>
+                <div class="control">
+                  <input
+                    class="input{% if form.first_name.errors %} is-danger{% endif %}"
+                    type="text"
+                    name="first_name"
+                    id="first-name-id"
+                    {% if form.errors %}value="{{ form.first_name.value }}"{% endif %}
+                    required
+                  />
+                </div>
+                {% for error in form.first_name.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+
+              <div class="field">
+                <label for="last-name-id" class="label">Apellido(s):</label>
+                <div class="control">
+                  <input
+                    class="input{% if form.last_name.errors %} is-danger{% endif %}"
+                    type="text"
+                    name="last_name"
+                    id="last-name-id"
+                    {% if form.errors %}value="{{ form.last_name.value }}"{% endif %}
+                    required
+                  />
+                </div>
+                {% for error in form.last_name.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+
+              <div class="field">
+                <label for="email-id" class="label">Correo electrónico:</label>
+                <div class="control">
+                  <input
+                    class="input{% if form.email.errors %} is-danger{% endif %}"
+                    type="email"
+                    name="email"
+                    id="email-id"
+                    {% if form.errors %}value="{{ form.email.value }}"{% endif %}
+                    required
+                  />
+                </div>
+                {% for error in form.email.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+
+              <div class="field">
+                <label for="password-id" class="label">Contraseña:</label>
+                <div class="control">
+                  <input
+                    class="input{% if form.password.errors %} is-danger{% endif %}" 
+                    type="password"
+                    name="password"
+                    id="password-id"
+                    required
+                  />
+                </div>
+                {% for error in form.password.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+
+              <div class="field">
+                <label for="password-confirmation-id" class="label">Confirmar contraseña:</label>
+                <div class="control">
+                  <input
+                    class="input{% if form.password_confirmation.errors %} is-danger{% endif %}"
+                    type="password"
+                    name="password_confirmation"
+                    id="password-confirmation-id"
+                    required
+                  />
+                </div>
+                {% for error in form.password_confirmation.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+
+              <div class="field buttons">
+                  <button type="submit" class="button">Crear</button>
+                  <button type="reset" class="button transparent">Reiniciar</button>
+              </div>
+
+            </form> 
+               
+          </div>
+
+
+
+        </div>
+
+        </div>
+    </section>
+
+</main>
+{% endblock content %}

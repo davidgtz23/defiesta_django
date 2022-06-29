@@ -1,0 +1,31 @@
+{% load static %}
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__menu">
+                <a href="{% url 'home' %}" class="footer__menu-logo">
+                    <img src="{% static 'images/logo_defiesta.svg' %}" alt="">
+                </a>
+                <nav class="footer__menu-nav">
+                    <a href="{% url 'providers:show_providers' %}"><i class="fas fa-angle-right"></i> Proveedores</a>
+                    <a href="./blog"><i class="fas fa-angle-right"></i> Blog</a>
+                    <a href="./contacto"><i class="fas fa-angle-right"></i> Contacto</a>
+                </nav>
+                <div class="footer__menu-rss">
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer__legals">
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Aviso de privacidad</a>
+                <a href="#">© 2020   All rights reserved.</a>
+            </div>
+        </div>
+    </footer>
